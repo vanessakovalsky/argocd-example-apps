@@ -1,0 +1,18 @@
+# 01-migration-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration
+  namespace: guestbook
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"   # avant tout le reste
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: busybox
+        command: ['sh', '-c', 'echo "Running migration..." && sleep 5 && echo "Done"']
+      restartPolicy: Never

@@ -1,0 +1,24 @@
+# app-guestbook.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wave
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/vanessakovalsky/argocd-example-apps
+    targetRevision: HEAD
+    path: wave-hook
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wave
+  
+  syncPolicy:
+    automated:
+     # prune: true
+    #  selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
