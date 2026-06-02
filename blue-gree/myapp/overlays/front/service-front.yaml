@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: myapp
-    version: blue   # ou green pour basculer
+    version: green   # ou green pour basculer
   ports:
     - port: 80
       targetPort: 80
