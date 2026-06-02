@@ -7,6 +7,6 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/replicas
-        value: 1
+        value: 12
     target:
       kind: Deployment
