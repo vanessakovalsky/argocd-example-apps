@@ -11,9 +11,9 @@ spec:
       - env: dev
         revision: develop
       - env: staging
-        revision: main
+        revision: master
       - env: prod
-        revision: main
+        revision: master
   template:
     metadata:
       name: 'guestbook-{{env}}'
